@@ -34,7 +34,6 @@ type ServerConfig struct {
 	ServerAddr     string `json:"server_addr"`
 	ServerDTLSAddr string `json:"server_dtls_addr"`
 	AdminAddr      string `json:"admin_addr"`
-	ProxyProtocol  bool   `json:"proxy_protocol"`
 	DbFile         string `json:"db_file"`
 	CertFile       string `json:"cert_file"`
 	CertKey        string `json:"cert_key"`

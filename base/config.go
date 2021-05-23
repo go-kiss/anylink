@@ -19,7 +19,6 @@ var configs = []config{
 	{Typ: cfgStr, Name: "server_addr", Usage: "前台服务监听地址", ValStr: ":443"},
 	{Typ: cfgStr, Name: "server_dtls_addr", Usage: "前台DTLS监听地址", ValStr: ":4433"},
 	{Typ: cfgStr, Name: "admin_addr", Usage: "后台服务监听地址", ValStr: ":8800"},
-	{Typ: cfgBool, Name: "proxy_protocol", Usage: "TCP代理协议", ValBool: false},
 	{Typ: cfgStr, Name: "db_file", Usage: "数据库地址", ValStr: "./data.db"},
 	{Typ: cfgStr, Name: "cert_file", Usage: "证书文件", ValStr: "./vpn_cert.pem"},
 	{Typ: cfgStr, Name: "cert_key", Usage: "证书密钥", ValStr: "./vpn_cert.key"},

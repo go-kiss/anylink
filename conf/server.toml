@@ -30,8 +30,6 @@ server_addr = ":443"
 server_dtls_addr = ":4433"
 #后台服务监听地址
 admin_addr = ":8800"
-#开启tcp proxy protocol协议
-proxy_protocol = false
 
 #客户端分配的ip地址池
 ipv4_cidr = "192.168.10.0/24"

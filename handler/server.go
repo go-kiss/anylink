@@ -6,10 +6,8 @@ import (
 	"log"
 	"net"
 	"net/http"
-	"time"
 
 	"github.com/go-kiss/anylink/base"
-	"github.com/go-kiss/anylink/pkg/proxyproto"
 	"github.com/gorilla/mux"
 )
 
@@ -38,10 +36,6 @@ func startTls() {
 		log.Fatal(err)
 	}
 	defer ln.Close()
-
-	if base.Cfg.ProxyProtocol {
-		ln = &proxyproto.Listener{Listener: ln, ProxyHeaderTimeout: time.Second * 5}
-	}
 
 	base.Info("listen server", addr)
 	err = srv.ServeTLS(ln, certFile, keyFile)
