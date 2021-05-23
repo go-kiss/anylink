@@ -8,7 +8,7 @@ db_file = "./data.db"
 #证书文件
 cert_file = "./test_vpn_cert.pem"
 cert_key = "./test_vpn_key.pem"
-ui_path = "../ui"
+ui_path = "../admin/web/ui"
 files_path = "../files"
 #日志目录,为空写入标准输出
 #log_path = "../log"

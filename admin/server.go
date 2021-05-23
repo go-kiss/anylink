@@ -11,13 +11,12 @@ import (
 
 // 开启服务
 func StartAdmin() {
-
 	r := mux.NewRouter()
 	r.Use(authMiddleware)
 
 	r.Handle("/", http.RedirectHandler("/ui/", http.StatusFound)).Name("index")
 	r.PathPrefix("/ui/").Handler(
-		http.StripPrefix("/ui/", http.FileServer(http.Dir(base.Cfg.UiPath))),
+		http.StripPrefix("/ui/", http.FileServer(getUiFS())),
 	).Name("static")
 	r.HandleFunc("/base/login", Login).Name("login")
 
