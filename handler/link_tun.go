@@ -114,7 +114,7 @@ func tunRead(ifce *water.Interface, cSess *sessdata.ConnSession) {
 		// packet := gopacket.NewPacket(data, layers.LayerTypeIPv4, gopacket.Default)
 		// fmt.Println("read:", packet)
 
-		if payloadOut(cSess, sessdata.LTypeIPData, 0x00, data) {
+		if payloadOut(cSess, 0x00, data) {
 			return
 		}
 

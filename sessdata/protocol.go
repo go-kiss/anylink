@@ -1,15 +1,7 @@
 package sessdata
 
-type LType int8
-
-const (
-	LTypeEthernet LType = 1
-	LTypeIPData   LType = 2
-)
-
 type Payload struct {
-	PType byte  // payload types
-	LType LType // LinkType
+	PType byte // payload types
 	Data  []byte
 }
 

@@ -6,9 +6,8 @@ import (
 	"github.com/songgao/water/waterutil"
 )
 
-func payloadIn(cSess *sessdata.ConnSession, lType sessdata.LType, pType byte, data []byte) bool {
+func payloadIn(cSess *sessdata.ConnSession, pType byte, data []byte) bool {
 	payload := &sessdata.Payload{
-		LType: lType,
 		PType: pType,
 		Data:  data,
 	}
@@ -34,18 +33,17 @@ func payloadInData(cSess *sessdata.ConnSession, payload *sessdata.Payload) bool 
 	return closed
 }
 
-func payloadOut(cSess *sessdata.ConnSession, lType sessdata.LType, pType byte, data []byte) bool {
+func payloadOut(cSess *sessdata.ConnSession, pType byte, data []byte) bool {
 	dSess := cSess.GetDtlsSession()
 	if dSess == nil {
-		return payloadOutCstp(cSess, lType, pType, data)
+		return payloadOutCstp(cSess, pType, data)
 	} else {
-		return payloadOutDtls(dSess, lType, pType, data)
+		return payloadOutDtls(dSess, pType, data)
 	}
 }
 
-func payloadOutCstp(cSess *sessdata.ConnSession, lType sessdata.LType, pType byte, data []byte) bool {
+func payloadOutCstp(cSess *sessdata.ConnSession, pType byte, data []byte) bool {
 	payload := &sessdata.Payload{
-		LType: lType,
 		PType: pType,
 		Data:  data,
 	}
@@ -61,9 +59,8 @@ func payloadOutCstp(cSess *sessdata.ConnSession, lType sessdata.LType, pType byt
 	return closed
 }
 
-func payloadOutDtls(dSess *sessdata.DtlsSession, lType sessdata.LType, pType byte, data []byte) bool {
+func payloadOutDtls(dSess *sessdata.DtlsSession, pType byte, data []byte) bool {
 	payload := &sessdata.Payload{
-		LType: lType,
 		PType: pType,
 		Data:  data,
 	}
@@ -78,14 +75,12 @@ func payloadOutDtls(dSess *sessdata.DtlsSession, lType sessdata.LType, pType byt
 
 // Acl规则校验
 func checkLinkAcl(group *dbdata.Group, payload *sessdata.Payload) bool {
-	if payload.LType == sessdata.LTypeIPData && payload.PType == 0x00 && len(group.LinkAcl) > 0 {
-	} else {
+	if payload.PType != 0x00 || len(group.LinkAcl) == 0 {
 		return true
 	}
 
 	ip_dst := waterutil.IPv4Destination(payload.Data)
 	ip_port := waterutil.IPv4DestinationPort(payload.Data)
-	// fmt.Println("sent:", ip_dst, ip_port)
 
 	// 优先放行dns端口
 	for _, v := range group.ClientDns {

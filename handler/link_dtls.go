@@ -64,7 +64,6 @@ func LinkDtls(conn net.Conn, cSess *sessdata.ConnSession) {
 		case 0x03: // DPD-REQ
 			// base.Debug("recv DPD-REQ", cSess.IpAddr)
 			payload := &sessdata.Payload{
-				LType: sessdata.LTypeIPData,
 				PType: 0x04,
 				Data:  nil,
 			}
@@ -77,7 +76,7 @@ func LinkDtls(conn net.Conn, cSess *sessdata.ConnSession) {
 		case 0x04:
 			// base.Debug("recv DPD-RESP", cSess.IpAddr)
 		case 0x00: // DATA
-			if payloadIn(cSess, sessdata.LTypeIPData, 0x00, hdata[1:n]) {
+			if payloadIn(cSess, 0x00, hdata[1:n]) {
 				return
 			}
 		}
@@ -102,10 +101,6 @@ func dtlsWrite(conn net.Conn, dSess *sessdata.DtlsSession, cSess *sessdata.ConnS
 		case payload = <-cSess.PayloadOutDtls:
 		case <-dSess.CloseChan:
 			return
-		}
-
-		if payload.LType != sessdata.LTypeIPData {
-			continue
 		}
 
 		header = []byte{payload.PType}
