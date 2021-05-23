@@ -39,7 +39,6 @@ func LinkAuth(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusBadRequest)
 		return
 	}
-	// fmt.Printf("%+v \n", cr)
 
 	setCommonHeader(w)
 	if cr.Type == "logout" {
@@ -88,8 +87,11 @@ func LinkAuth(w http.ResponseWriter, r *http.Request) {
 	sess.UniqueIdGlobal = cr.DeviceId.UniqueIdGlobal
 	other := &dbdata.SettingOther{}
 	_ = dbdata.SettingGet(other)
-	rd := RequestData{SessionId: sess.Sid, SessionToken: sess.Sid + "@" + sess.Token,
-		Banner: other.Banner}
+	rd := RequestData{
+		SessionId:    sess.Sid,
+		SessionToken: sess.Sid + "@" + sess.Token,
+		Banner:       other.Banner,
+	}
 	w.WriteHeader(http.StatusOK)
 	tplRequest(tpl_complete, w, rd)
 	base.Debug("login", cr.Auth.Username)

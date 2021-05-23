@@ -2,7 +2,6 @@ package handler
 
 import (
 	"crypto/tls"
-	"fmt"
 	"log"
 	"net"
 	"net/http"
@@ -16,7 +15,6 @@ func startTls() {
 	certFile := base.Cfg.CertFile
 	keyFile := base.Cfg.CertKey
 
-	// 设置tls信息
 	tlsConfig := &tls.Config{
 		NextProtos:         []string{"http/1.1"},
 		MinVersion:         tls.VersionTLS12,
@@ -28,8 +26,6 @@ func startTls() {
 		TLSConfig: tlsConfig,
 		ErrorLog:  base.GetBaseLog(),
 	}
-
-	var ln net.Listener
 
 	ln, err := net.Listen("tcp", addr)
 	if err != nil {
@@ -55,15 +51,6 @@ func initRoute() http.Handler {
 			http.FileServer(http.Dir(base.Cfg.FilesPath)),
 		),
 	)
-	r.NotFoundHandler = http.HandlerFunc(notFound)
+
 	return r
-}
-
-func notFound(w http.ResponseWriter, r *http.Request) {
-	// fmt.Println(r.RemoteAddr)
-	// hu, _ := httputil.DumpRequest(r, true)
-	// fmt.Println("NotFound: ", string(hu))
-
-	w.WriteHeader(http.StatusNotFound)
-	fmt.Fprintln(w, "404 page not found")
 }

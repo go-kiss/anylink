@@ -27,7 +27,6 @@ func startDtls() {
 	}
 	logf := logging.NewDefaultLoggerFactory()
 	logf.Writer = base.GetBaseLw()
-	// logf.DefaultLogLevel = logging.LogLevelTrace
 	logf.DefaultLogLevel = logging.LogLevelInfo
 
 	config := &dtls.Config{
