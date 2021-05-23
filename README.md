@@ -21,10 +21,9 @@ AnyLink 基于 [ietf-openconnect](https://tools.ietf.org/html/draft-mavrogiannop
 git clone https://github.com/go-kiss/anylink.git
 
 cd anylink
-sh build.sh
+make
 
 # 注意使用root权限运行
-cd anylink-deploy
 sudo ./anylink -conf="conf/server.toml"
 
 # 默认管理后台访问地址
