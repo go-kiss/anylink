@@ -14,7 +14,6 @@ const routes = [
         children: [
             {path: 'home', component: () => import('@/pages/Home')},
 
-            {path: 'set/system', component: () => import('@/pages/set/System')},
             {path: 'set/soft', component: () => import('@/pages/set/Soft')},
             {path: 'set/other', component: () => import('@/pages/set/Other')},
 

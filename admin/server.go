@@ -21,7 +21,6 @@ func StartAdmin() {
 	r.HandleFunc("/base/login", Login).Name("login")
 
 	r.HandleFunc("/set/home", SetHome)
-	r.HandleFunc("/set/system", SetSystem)
 	r.HandleFunc("/set/soft", SetSoft)
 	r.HandleFunc("/set/other", SetOther)
 	r.HandleFunc("/set/other/edit", SetOtherEdit)
