@@ -1,7 +1,7 @@
 #! /bin/bash
-version=(`wget -qO- -t1 -T2 "https://api.github.com/repos/bjdgyc/anylink/releases/latest" | grep "tag_name" | head -n 1 | awk -F ":" '{print $2}' | sed 's/\"//g;s/,//g;s/ //g'`)
+version=(`wget -qO- -t1 -T2 "https://api.github.com/repos/go-kiss/anylink/releases/latest" | grep "tag_name" | head -n 1 | awk -F ":" '{print $2}' | sed 's/\"//g;s/,//g;s/ //g'`)
 count=(`ls anylink | wc -w `)
-wget https://github.com/bjdgyc/anylink/releases/download/${version}/anylink-deploy.tar.gz
+wget https://github.com/go-kiss/anylink/releases/download/${version}/anylink-deploy.tar.gz
 tar xf anylink-deploy.tar.gz
 rm -rf anylink-deploy.tar.gz
 if [ ${count} -eq 0 ]; then

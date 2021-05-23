@@ -24,7 +24,7 @@ RUN cd /anylink/server;go build -o anylink -ldflags "-X main.COMMIT_ID=$(git rev
 
 # anylink
 FROM alpine
-LABEL maintainer="github.com/bjdgyc"
+LABEL maintainer="github.com/go-kiss"
 
 ENV IPV4_CIDR="192.168.10.0/24"
 

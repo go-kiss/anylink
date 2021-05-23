@@ -9,7 +9,7 @@ AnyLink 基于 [ietf-openconnect](https://tools.ietf.org/html/draft-mavrogiannop
 
 ## Screenshot
 
-![online](screenshot/online.jpg)
+![online](misc/screenshot/online.jpg)
 
 ## Installation
 
@@ -158,10 +158,10 @@ iptables -t nat -A POSTROUTING -s 192.168.10.0/24 -o eth0 -j MASQUERADE
 <details>
 <summary>展开查看</summary>
 
-![system.jpg](screenshot/system.jpg)
-![setting.jpg](screenshot/setting.jpg)
-![users.jpg](screenshot/users.jpg)
-![ip_map.jpg](screenshot/ip_map.jpg)
-![group.jpg](screenshot/group.jpg)
+![system.jpg](misc/screenshot/system.jpg)
+![setting.jpg](misc/screenshot/setting.jpg)
+![users.jpg](misc/screenshot/users.jpg)
+![ip_map.jpg](misc/screenshot/ip_map.jpg)
+![group.jpg](misc/screenshot/group.jpg)
 
 </details>
