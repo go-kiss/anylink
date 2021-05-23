@@ -55,17 +55,17 @@ func LinkDtls(conn net.Conn, cSess *sessdata.ConnSession) {
 		}
 
 		switch hdata[0] {
-		case 0x07: // KEEPALIVE
+		case sessdata.TypeKeepAlive:
 			// do nothing
 			base.Debug("recv keepalive", cSess.IpAddr)
-		case 0x05: // DISCONNECT
+		case sessdata.TypeDsiconnect:
 			base.Debug("DISCONNECT", cSess.IpAddr)
 			return
-		case 0x03: // DPD-REQ
+		case sessdata.TypeDpdReq: // DPD-REQ
 			// base.Debug("recv DPD-REQ", cSess.IpAddr)
 			payload := &sessdata.Payload{
-				PType: 0x04,
-				Data:  nil,
+				Type: sessdata.TypeDpdResp,
+				Data: nil,
 			}
 
 			select {
@@ -73,10 +73,10 @@ func LinkDtls(conn net.Conn, cSess *sessdata.ConnSession) {
 			case <-dSess.CloseChan:
 				return
 			}
-		case 0x04:
+		case sessdata.TypeDpdResp:
 			// base.Debug("recv DPD-RESP", cSess.IpAddr)
-		case 0x00: // DATA
-			if payloadIn(cSess, 0x00, hdata[1:n]) {
+		case sessdata.TypeData:
+			if payloadIn(cSess, sessdata.TypeData, hdata[1:n]) {
 				return
 			}
 		}
@@ -103,7 +103,7 @@ func dtlsWrite(conn net.Conn, dSess *sessdata.DtlsSession, cSess *sessdata.ConnS
 			return
 		}
 
-		header = []byte{payload.PType}
+		header = []byte{payload.Type}
 		header = append(header, payload.Data...)
 		n, err := conn.Write(header)
 		if err != nil {

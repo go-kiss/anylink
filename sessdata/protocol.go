@@ -1,8 +1,19 @@
 package sessdata
 
+type Type byte
+
+const (
+	TypeData       = 0x00
+	TypeDpdReq     = 0x03
+	TypeDpdResp    = 0x04
+	TypeDsiconnect = 0x05
+	TypeKeepAlive  = 0x07
+	TypeTerminate  = 0x09
+)
+
 type Payload struct {
-	PType byte // payload types
-	Data  []byte
+	Type byte
+	Data []byte
 }
 
 /*

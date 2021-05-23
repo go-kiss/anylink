@@ -8,8 +8,8 @@ import (
 
 func payloadIn(cSess *sessdata.ConnSession, pType byte, data []byte) bool {
 	payload := &sessdata.Payload{
-		PType: pType,
-		Data:  data,
+		Type: pType,
+		Data: data,
 	}
 
 	return payloadInData(cSess, payload)
@@ -44,8 +44,8 @@ func payloadOut(cSess *sessdata.ConnSession, pType byte, data []byte) bool {
 
 func payloadOutCstp(cSess *sessdata.ConnSession, pType byte, data []byte) bool {
 	payload := &sessdata.Payload{
-		PType: pType,
-		Data:  data,
+		Type: pType,
+		Data: data,
 	}
 
 	closed := false
@@ -61,8 +61,8 @@ func payloadOutCstp(cSess *sessdata.ConnSession, pType byte, data []byte) bool {
 
 func payloadOutDtls(dSess *sessdata.DtlsSession, pType byte, data []byte) bool {
 	payload := &sessdata.Payload{
-		PType: pType,
-		Data:  data,
+		Type: pType,
+		Data: data,
 	}
 
 	select {
@@ -75,7 +75,7 @@ func payloadOutDtls(dSess *sessdata.DtlsSession, pType byte, data []byte) bool {
 
 // Acl规则校验
 func checkLinkAcl(group *dbdata.Group, payload *sessdata.Payload) bool {
-	if payload.PType != 0x00 || len(group.LinkAcl) == 0 {
+	if payload.Type != sessdata.TypeData || len(group.LinkAcl) == 0 {
 		return true
 	}
 
