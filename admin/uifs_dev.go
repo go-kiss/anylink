@@ -3,7 +3,6 @@
 package admin
 
 import (
-	"fmt"
 	"net/http"
 	"os"
 
@@ -11,6 +10,5 @@ import (
 )
 
 func getUiFS() http.FileSystem {
-	fmt.Println(base.Cfg.UiPath)
 	return http.FS(os.DirFS(base.Cfg.UiPath))
 }

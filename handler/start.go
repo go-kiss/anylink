@@ -2,7 +2,6 @@ package handler
 
 import (
 	"github.com/go-kiss/anylink/admin"
-	"github.com/go-kiss/anylink/base"
 	"github.com/go-kiss/anylink/dbdata"
 	"github.com/go-kiss/anylink/sessdata"
 )
@@ -12,9 +11,6 @@ func Start() {
 	sessdata.Start()
 
 	checkTun()
-	if base.Cfg.LinkMode == base.LinkModeTAP {
-		checkTap()
-	}
 	go admin.StartAdmin()
 	go startTls()
 	go startDtls()

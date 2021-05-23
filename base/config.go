@@ -32,7 +32,6 @@ var configs = []config{
 	{Typ: cfgStr, Name: "admin_user", Usage: "管理用户名", ValStr: "admin"},
 	{Typ: cfgStr, Name: "admin_pass", Usage: "管理用户密码", ValStr: "$2a$10$UQ7C.EoPifDeJh6d8.31TeSPQU7hM/NOM2nixmBucJpAuXDQNqNke"},
 	{Typ: cfgStr, Name: "jwt_secret", Usage: "JWT密钥", ValStr: "iLmspvOiz*%ovfcs*wersdf#heR8pNU4XxBm&mW$aPCjSRMbYH#&"},
-	{Typ: cfgStr, Name: "link_mode", Usage: "虚拟网络类型", ValStr: "tun"},
 	{Typ: cfgStr, Name: "ipv4_cidr", Usage: "ip地址网段", ValStr: "192.168.10.0/24"},
 	{Typ: cfgStr, Name: "ipv4_gateway", Usage: "ipv4_gateway", ValStr: "192.168.10.1"},
 	{Typ: cfgStr, Name: "ipv4_start", Usage: "IPV4开始地址", ValStr: "192.168.10.100"},

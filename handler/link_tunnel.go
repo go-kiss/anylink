@@ -155,13 +155,7 @@ func LinkTunnel(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// 开始数据处理
-	switch base.Cfg.LinkMode {
-	case base.LinkModeTUN:
-		err = LinkTun(cSess)
-	case base.LinkModeTAP:
-		err = LinkTap(cSess)
-	}
-	if err != nil {
+	if err = LinkTun(cSess); err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		return
 	}
