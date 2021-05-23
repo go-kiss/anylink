@@ -2,9 +2,7 @@
 
 ## Repo
 
-> github: https://github.com/bjdgyc/anylink-web
-
-> gitee: https://gitee.com/bjdgyc/anylink-web
+> github: https://github.com/go-kiss/anylink-web
 
 ## Project setup
 ```

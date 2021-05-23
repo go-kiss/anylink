@@ -141,7 +141,6 @@ Check out the **[contributing wiki](https://github.com/pion/webrtc/wiki/Contribu
 * [Atsushi Watanabe](https://github.com/at-wat)
 * [Julien Salleyron](https://github.com/juliens) - *Server Name Indication*
 * [Jeroen de Bruijn](https://github.com/vidavidorra)
-* [bjdgyc](https://github.com/bjdgyc)
 * [Jeffrey Stoke (Jeff Ctor)](https://github.com/jeffreystoke) - *Fragmentbuffer Fix*
 * [Frank Olbricht](https://github.com/folbricht)
 * [ZHENK](https://github.com/scorpionknifes)
